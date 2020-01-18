@@ -24,12 +24,12 @@ export class BankComponent implements OnInit {
 
 
 
-  constructor(private httpClient: HttpClient, private formBuilder: FormBuilder, private mapsAPILoader: MapsAPILoader,
+  constructor(private httpClient: HttpClient, private formBuilder: FormBuilder,
     private ngZone: NgZone,public sanitizer:DomSanitizer, private bankService: BankService
   ) {
     this.bankName = '';
     this.isFormfull = false;
-    this.errorInform = false;
+    //this.errorInform = false;
     this.checkoutForm = this.formBuilder.group({
       name: '',
       branch: ''
