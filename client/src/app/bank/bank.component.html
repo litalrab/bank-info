@@ -1,0 +1,86 @@
+<h3 align="center">Bank information</h3>
+
+<div align="center">
+
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+
+    <div class="margin-2">
+      <label for="name">
+        Bank name :
+      </label>
+      <input id="name" type="text" (change)="getBranchNums($event)" (keyup)="getBankNames($event)" name="city"
+        list="names">
+      <datalist id="names">
+        <option *ngFor="let name of bankService.namesList" [value]=name>{{name}}</option>
+      </datalist>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="errorInform">
+      {{errMsg}}
+    </div>
+    <div class="margin-2">
+      <label for="branch">
+        Branch number :
+      </label>
+      <input id="branch" type="text" (change)="chooseBranchNum($event)" formControlName="branch" list="branchNum">
+      <datalist id="branchNum">
+        <option *ngFor="let num of bankService.branchNumbers" [value]="num">{{num}}</option>
+      </datalist>
+    </div>
+    <div *ngIf="isFormfull" class="margin-2">
+      <button class="button" type="submit">Submit</button>
+    </div>
+  </form>
+
+  <div *ngIf="bankService.bankDetails" align="center" class="details ">
+    <div>
+      Bank_Code : {{bankService.bankDetails?.Bank_Code}}
+    </div>
+    <div>
+
+      Bank_Name : {{bankService.bankDetails?.Bank_Name}}
+
+    </div>
+    <div>
+   
+      Branch_Address : {{bankService.bankDetails?.Branch_Address}}
+
+    </div>
+    <div>
+  
+      City : {{bankService.bankDetails?.City}}
+    </div>
+    <div>
+      Zip_Code : {{bankService.bankDetails?.Zip_Code}}
+    </div>
+    <div>
+      POB : {{bankService.bankDetails?.POB}}
+    </div>
+    <div>
+     Telephone : {{bankService.bankDetails?.Telephone}}
+    </div>
+    <div>
+      Fax : {{bankService.bankDetails?.Fax}}
+    </div>
+    <div>
+      Free_Tel : {{bankService.bankDetails?.Free_Tel}}
+    </div>
+    <div>
+      Handicap_Access : {{bankService.bankDetails?.Handicap_Access}}
+    </div>
+    <div>
+      day_closed : {{bankService.bankDetails?.day_closed}}
+    </div>
+  </div>
+</div>
+
+
+<!-- <div *ngFor="let item of bankService.bankDetails| keyvalue; let i = index">
+    <div *ngIf="i == 1 || i == 2 || i ==5 || i==6 || i==7 || i==8 || i==9 ||
+    i==10 || i==11 || i==12 ||i==0">
+      {{item.key}} :
+
+      {{item.value}}
+
+    </div>
+
+  </div> -->
