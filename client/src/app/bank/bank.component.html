@@ -14,8 +14,8 @@
         <option *ngFor="let name of bankService.namesList" [value]=name>{{name}}</option>
       </datalist>
     </div>
-    <div class="alert alert-danger" role="alert" *ngIf="errorInform">
-      {{errMsg}}
+    <div class="alert alert-danger" role="alert" *ngIf="bankService.errorInform">
+      {{bankService.errMsg}}
     </div>
     <div class="margin-2">
       <label for="branch">
@@ -70,7 +70,15 @@
     <div>
       day_closed : {{bankService.bankDetails?.day_closed}}
     </div>
+    <iframe width="350" height="350" id="gmap_canvas" [src]="sanitizer.bypassSecurityTrustResourceUrl(bankService.srcMap)"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
   </div>
+
+  <!-- <agm-map [(latitude)]="location.lat" [(longitude)]="location.lng" [(zoom)]="location.zoom" [disableDefaultUI]="true" [zoomControl]="true" [(fitBounds)]='location.viewport'>
+    <agm-marker [(latitude)]="location.marker.lat" [(longitude)]="location.marker.lng"></agm-marker>
+  </agm-map> -->
+
+ 
+ 
 </div>
 
 
