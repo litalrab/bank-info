@@ -43,7 +43,7 @@ export class BankComponent implements OnInit {
     this.bankName = e.target.value;
     if (this.bankName)
       this.bankService.getBranchNums(this.bankName);
-      if(!this.bankService.namesList)
+      if(this.bankService.namesList.length==0)
       {
         this.bankService.errorInform = true;
         this.bankService.errMsg = "invalid bank name"
